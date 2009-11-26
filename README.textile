@@ -1,0 +1,97 @@
+h1. Hash and Objects
+
+It's a common task to simulate objects from hashes, but one has to remember using hash access format in order to access it. Hashie helps you by allowing direct access to its content:
+
+<pre>
+	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
+	puts hash.team.players[0].name
+</pre>
+
+h1. Why would I use Hashie?
+
+h2. The reality without Hashie
+
+<pre>
+	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
+	puts hash[:team][:players][0][:name] # his name
+</pre>
+
+Although the Ruby language provides an easy way to access hashes, it becomes easier if you use Rails and
+has created an ActiveRecord for your representation:
+
+h2. The reality without Hashie, within Rails
+
+<pre>
+	class Team < ActiveRecord::Base
+		has_many :players
+	end
+	class Player < ActiveRecord::Base
+		# create a migration with field name:string
+	end
+	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
+	puts hash[:player][0][:name] # his name
+</pre>
+
+h1. Installing
+
+h2. Ruby
+
+# remember to use gemcutter!
+gem install hashie
+
+h2. Rails
+
+Just add in your environment.rb the following line:
+
+<pre>
+config.gem "hashie", :source => "http://gemcutter.org"
+</pre>
+
+And then execute:
+<pre>rake gems:install</pre>
+
+or, if you prefer to install it as a plugin:
+
+<pre>script/plugin install git://github.com/caelum/hashie.git</pre>
+
+
+h2. Help
+
+If you are looking for or want to help, let us know at the mailing list:
+
+"http://groups.google.com/group/hashie-ruby":http://groups.google.com/group/hashie-ruby
+
+h2. Team
+
+Hashie was created and is maintained within Caelum:http://www.caelum.com.br by
+
+Projetct Founder
+* "Guilherme Silveira":mailto:guilherme.silveira@caelum.com.br - twitter:http://www.twitter.com/guilhermecaelum "http://guilhermesilveira.wordpress.com":http://guilhermesilveira.wordpress.com
+
+Active Commiters
+* Guilherme Silveira
+* Jose Donizetti
+
+h3. Sources
+
+You can see its source code at: "github":http://github.com/caelum/hashie
+
+h2. License
+
+/***
+ * Copyright (c) 2009 Caelum - www.caelum.com.br/opensource
+ * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
