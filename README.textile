@@ -1,16 +1,18 @@
 h1. Hash and Objects
 
-It's a common task to simulate objects from hashes, but one has to remember using hash access format in order to access it. Hashie helps you by allowing direct access to its content:
+It's a common task to simulate objects from hashes, but one has to remember using hash access format in order to access it. Hashi helps you by allowing direct access to its content:
 
 <pre>
 	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
-	object = Hashie.to_object(hash)
+	object = Hashi.to_object(hash)
 	puts object.team.players[0].name
 </pre>
 
-h1. Why would I use Hashie?
+h1. Why would I use Hashi?
 
-h2. The reality without Hashie
+<img src="http://robotomi.files.wordpress.com/2007/06/hashi.jpg" />
+
+h2. The reality without Hashi
 
 <pre>
 	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
@@ -20,7 +22,7 @@ h2. The reality without Hashie
 Although the Ruby language provides an easy way to access hashes, it becomes easier if you use Rails and
 has created an ActiveRecord for your representation:
 
-h2. The reality without Hashie, within Rails
+h2. The reality without Hashi, within Rails
 
 <pre>
 	class Team < ActiveRecord::Base
@@ -37,15 +39,16 @@ h1. Installing
 
 h2. Ruby
 
-# remember to use gemcutter!
-gem install hashie
+gem install gemcutter
+gem tumble
+gem install hashi
 
 h2. Rails
 
 Just add in your environment.rb the following line:
 
 <pre>
-config.gem "hashie", :source => "http://gemcutter.org"
+config.gem "hashi", :source => "http://gemcutter.org"
 </pre>
 
 And then execute:
@@ -53,18 +56,18 @@ And then execute:
 
 or, if you prefer to install it as a plugin:
 
-<pre>script/plugin install git://github.com/caelum/hashie.git</pre>
+<pre>script/plugin install git://github.com/caelum/hashi.git</pre>
 
 
 h2. Help
 
 If you are looking for or want to help, let us know at the mailing list:
 
-"http://groups.google.com/group/hashie-ruby":http://groups.google.com/group/hashie-ruby
+"http://groups.google.com/group/hashi-ruby":http://groups.google.com/group/hashi-ruby
 
 h2. Team
 
-Hashie was created and is maintained within Caelum:http://www.caelum.com.br by
+Hashi was created and is maintained within Caelum:http://www.caelum.com.br by
 
 Projetct Founder
 * "Guilherme Silveira":mailto:guilherme.silveira@caelum.com.br - twitter:http://www.twitter.com/guilhermecaelum "http://guilhermesilveira.wordpress.com":http://guilhermesilveira.wordpress.com
@@ -75,7 +78,7 @@ Active Commiters
 
 h3. Sources
 
-You can see its source code at: "github":http://github.com/caelum/hashie
+You can see its source code at: "github":http://github.com/caelum/hashi
 
 h2. License
 

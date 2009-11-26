@@ -4,5 +4,5 @@ require 'rubygems'
 require 'spec'
 require 'ruby-debug'
 
-require 'hashie'
+require 'hashi'
 

@@ -1,4 +1,4 @@
-module Hashie
+module Hashi
   class CustomHash
 
     def initialize(h)

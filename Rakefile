@@ -4,12 +4,12 @@ require 'rake'
 require 'rake/gempackagetask'
 require 'spec/rake/spectask'
 
-GEM = "hashie"
+GEM = "hashi"
 GEM_VERSION = "1.0"
 SUMMARY = "Hash to object helper methods."
 AUTHOR = "Guilherme Silveira, Jose Donizetti"
 EMAIL = "guilherme.silveira@caelum.com.br"
-HOMEPAGE = "http://github.com/caelum/hashie"
+HOMEPAGE = "http://github.com/caelum/hashi"
 
 spec = Gem::Specification.new do |s|
   s.name = GEM
