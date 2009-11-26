@@ -4,7 +4,8 @@ It's a common task to simulate objects from hashes, but one has to remember usin
 
 <pre>
 	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
-	puts hash.team.players[0].name
+	object = Hashie.to_object(hash)
+	puts object.team.players[0].name
 </pre>
 
 h1. Why would I use Hashie?

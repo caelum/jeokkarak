@@ -1,5 +1,5 @@
 module Hashie
-  class CustomObject
+  class CustomHash
 
     def initialize(h)
       @hash = h
@@ -18,11 +18,11 @@ module Hashie
     end
     private
     def transform(value)
-      return CustomObject.new(value) if value.kind_of?(Hash) || value.kind_of?(Array)
+      return CustomHash.new(value) if value.kind_of?(Hash) || value.kind_of?(Array)
       value
     end
   end
-  def self.hash_to_object(h)
-    CustomObject.new(h)
+  def self.to_object(h)
+    CustomHash.new(h)
   end
 end
