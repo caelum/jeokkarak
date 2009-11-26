@@ -33,7 +33,7 @@ h2. The reality without Hashi, within Rails
 	puts Team.from_xml(hash).players[0].name
 </pre>
 
-h2. How does it compare to Hashie?
+h2. How does it compare to Hashi?
 
 Hashi actually does not create your attributes, instead it deals with *method_missing* invocations to
 simulate those properties, never creating a copy of your hash.
