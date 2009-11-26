@@ -18,7 +18,7 @@ h2. The reality without Hashi
 </pre>
 
 Although the Ruby language provides an easy way to access hashes, it becomes easier if you use Rails and
-has created an ActiveRecord for your representation:
+has created an ActiveRecord for your representation, using "Matt Pulver's":http://www.xcombinator.com/2008/07/06/activerecord-from_json-and-from_xml/ code:
 
 h2. The reality without Hashi, within Rails
 
