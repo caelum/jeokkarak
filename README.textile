@@ -10,8 +10,6 @@ It's a common task to simulate objects from hashes, but one has to remember usin
 
 h1. Why would I use Hashi?
 
-<img src="http://robotomi.files.wordpress.com/2007/06/hashi.jpg" />
-
 h2. The reality without Hashi
 
 <pre>
@@ -32,7 +30,7 @@ h2. The reality without Hashi, within Rails
 		# create a migration with field name:string
 	end
 	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
-	puts hash[:player][0][:name] # his name
+	puts Team.from_xml(hash).players[0].name
 </pre>
 
 h2. How does it compare to Hashie?
