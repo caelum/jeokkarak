@@ -1,5 +1,7 @@
 module Hashi
   class CustomHash
+    
+    attr_reader :hash
 
     def initialize(h)
       @hash = h
@@ -21,6 +23,7 @@ module Hashi
       return CustomHash.new(value) if value.kind_of?(Hash) || value.kind_of?(Array)
       value
     end
+    
   end
   def self.to_object(h)
     CustomHash.new(h)

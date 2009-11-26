@@ -35,6 +35,28 @@ h2. The reality without Hashi, within Rails
 	puts hash[:player][0][:name] # his name
 </pre>
 
+h2. How does it compare to Hashie?
+
+Hashi actually does not create your attributes, instead it deals with *method_missing* invocations to
+simulate those properties, never creating a copy of your hash.
+
+h2. More info
+
+You can access the original hash (updated if you have made any changes) by one of those two ways:
+
+<pre>
+	hash = { :team => {:players => [{:name=>"guilherme silveira"},{:name=>"jose donizetti"}]}}
+	object = Hashi.to_object(hash)
+	object.team.players[0].name = 'jose donizetti'
+	
+	# the original hash was modified!
+	puts hash
+	
+	# you can extract the original hash if you wish
+	puts object.hash
+	
+</pre>
+
 h1. Installing
 
 h2. Ruby
