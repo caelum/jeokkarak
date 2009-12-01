@@ -4,6 +4,7 @@ module Chokara
       #      Hashi::CustomHash.new(h)
       h = h.dup
       links = nil
+      result = self.new
       h.each do |key,value|
         case value.class.to_s
         when 'Array'
@@ -11,9 +12,6 @@ module Chokara
         when /\AHash(WithIndifferentAccess)?\Z/
           h[key] = reflect_on_association(key.to_sym ).klass.from_hash value
         end
-      end
-      result = self.new
-      h.each do |key, value|
         result.send("#{key}=",value) if result.respond_to?("#{key}=")
       end
 #      if !(links.nil?) && self.include?(Restfulie::Client::Instance)
