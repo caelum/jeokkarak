@@ -1,3 +1,5 @@
+require 'chokara'
+
 module Hashi
   class UndefinedMethod
   end
