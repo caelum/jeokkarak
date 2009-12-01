@@ -100,6 +100,13 @@ h3. Sources
 
 You can see its source code at: "github":http://github.com/caelum/hashi
 
+h2. What's new
+
+h3. 1.0.1
+
+* Supports boolean invocations with ?
+* Non-existing fields will throw an exception
+
 h2. License
 
 /***

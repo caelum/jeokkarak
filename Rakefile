@@ -5,7 +5,7 @@ require 'rake/gempackagetask'
 require 'spec/rake/spectask'
 
 GEM = "hashi"
-GEM_VERSION = "1.0"
+GEM_VERSION = "1.0.1"
 SUMMARY = "Hash to object helper methods."
 AUTHOR = "Guilherme Silveira, Jose Donizetti"
 EMAIL = "guilherme.silveira@caelum.com.br"

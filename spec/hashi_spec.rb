@@ -16,6 +16,10 @@ describe Hashi::CustomHash do
       hash = {"player" => {"name" => "guilherme silveira"}}
       Hashi.to_object(hash).player.name.should == ("guilherme silveira")
     end
+    it "should allow access to boolean element" do
+      hash = {"player" => {"name" => "guilherme silveira", "valid" => true}}
+      Hashi.to_object(hash).player.valid.should be_true
+    end
     it "should allow access attribution to child element" do
       hash = {"player" => {"name" => "guilherme silveira"}}
       Hashi.to_object(hash).player.name = "donizetti"
