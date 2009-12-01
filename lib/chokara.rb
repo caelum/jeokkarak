@@ -1,7 +1,9 @@
 module Chokara
   module Base
-    def to_object(h)
-      Hashi::CustomHash.new(h)
+    def from_hash(h)
+      #      Hashi::CustomHash.new(h)
+      instance = new
+      instance
     end
   end
 end

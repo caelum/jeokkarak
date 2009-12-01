@@ -11,38 +11,39 @@ describe Chokara::Base do
   context "when creating an object from a hash" do
     it "should create that class's object" do
       hash = {"name" => "guilherme silveira"}
-      Product.to_object(hash).name.should == ("guilherme silveira")
+      puts Product.from_hash(hash).class
+      Product.from_hash(hash).class.should eql(Product)
     end
     it "should allow direct attribute access" do
       hash = {"name" => "guilherme silveira"}
-      Product.to_object(hash).name.should == ("guilherme silveira")
+      Product.from_hash(hash).name.should == ("guilherme silveira")
     end
     it "should allow direct attribute attribution" do
       hash = {"name" => "guilherme silveira"}
-      Product.to_object(hash).name = "donizetti"
-      Product.to_object(hash).name.should == ("donizetti")
+      Product.from_hash(hash).name = "donizetti"
+      Product.from_hash(hash).name.should == ("donizetti")
     end
     it "should allow access to child element" do
       hash = {"player" => {"name" => "guilherme silveira"}}
-      Product.to_object(hash).player.name.should == ("guilherme silveira")
+      Product.from_hash(hash).player.name.should == ("guilherme silveira")
     end
     it "should allow access to boolean element" do
       hash = {"player" => {"name" => "guilherme silveira", "valid" => true}}
-      Product.to_object(hash).player.valid.should be_true
+      Product.from_hash(hash).player.valid.should be_true
     end
     it "should allow access attribution to child element" do
       hash = {"player" => {"name" => "guilherme silveira"}}
-      Product.to_object(hash).player.name = "donizetti"
-      Product.to_object(hash).player.name.should == ("donizetti")
+      Product.from_hash(hash).player.name = "donizetti"
+      Product.from_hash(hash).player.name.should == ("donizetti")
     end
     it "should allow access to an array element" do
       hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}]}
-      Product.to_object(hash).player[1].name.should == ("caue guerra")
+      Product.from_hash(hash).player[1].name.should == ("caue guerra")
     end
     it "should allow access attribution to an array element" do
       hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}]}
-      Product.to_object(hash).player[1].name = "donizetti"
-      Product.to_object(hash).player[1].name.should == ("donizetti")
+      Product.from_hash(hash).player[1].name = "donizetti"
+      Product.from_hash(hash).player[1].name.should == ("donizetti")
     end
     
   end
