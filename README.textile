@@ -1,3 +1,18 @@
+h1. Schema evolution
+
+One of the main issues with service oriented architectures is the use of strong coupled schema definitions shared between clients and servers.
+
+In order to provide forward-compatibility, clients should be able to accept formats that contain
+new content, without breaking own their own.
+
+Jeokkarak and Hashi makes the perfect couple for this task: given a hash (parsed from a xml file), Jeokkarak will either:
+
+* instantiate your rail's ActiveRecord type and use its relations
+* instantiate your type and use pre-defined relations
+* create a pseudo-object backed on the hash
+
+In any of those cases, Jeokkarak will let your server evolve their schema, without requiring you to add new fields to your type.
+
 h1. Jeokkarak
 
 Jeokkarak is the korean version of hashis. In our case, Jeokkarak is used to support
