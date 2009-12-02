@@ -16,10 +16,13 @@ module Chokara
         name = "#{key}="
         result.send(name, value) if result.respond_to?(name)
         def result.method_missing(name, *args, &block)
-          puts "will try #{name} #{args} #{block}"
-          result = Hashi.to_object(@_internal_hash).send(name, args, block)
-          puts "ha! missing #{name} is #{result}"
-          result
+          if name.to_s[-1,1]=='!='
+            name.to_schop
+          else
+            result = Hashi.to_object(@_internal_hash).send(name, args[0], block)
+            puts "result is after #{name} #{@_internal_hash}"
+            result
+          end
         end
       end
 #      if !(links.nil?) && self.include?(Restfulie::Client::Instance)

@@ -35,9 +35,9 @@ describe Chokara::Base do
       product.age.should == 29
     end
     it "should allow direct new attribute attribution" do
-      hash = {"age" => "28"}
+      hash = {"age" => 28}
       product = Product.from_hash(hash)
-      product.age = 28
+      product.age = 29
       product.age.should == 29
     end
     it "should allow access to child element" do
