@@ -37,10 +37,17 @@ module Jeokkarak
             Hashi.to_object(@_internal_hash).send(name, args[0], block)
         end
       end
-#      if !(links.nil?) && self.include?(Restfulie::Client::Instance)
-#        result.add_transitions(links)
-#      end
       result
     end
   end
 end
+
+module Jeokkarak
+  module Config
+    def acts_as_jeokkarak
+      self.extend Jeokkarak::Base
+    end
+  end
+end
+
+Object.extend Jeokkarak::Config

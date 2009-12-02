@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 class Player
   attr_accessor :_internal_hash
-  extend Jeokkarak::Base
+  acts_as_jeokkarak
   attr_accessor :name
   attr_accessor :valid
   def valid?
@@ -12,7 +12,7 @@ end
 
 class Team
   attr_accessor :_internal_hash
-  extend Jeokkarak::Base
+  acts_as_jeokkarak
   has_child Player, :as => "player"
 end
 
