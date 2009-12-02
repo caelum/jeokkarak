@@ -17,10 +17,9 @@ h2. The reality without Hashi
 	puts hash[:team][:players][0][:name] # his name
 </pre>
 
-Although the Ruby language provides an easy way to access hashes, it becomes easier if you use Rails and
-has created an ActiveRecord for your representation, using "Matt Pulver's":http://www.xcombinator.com/2008/07/06/activerecord-from_json-and-from_xml/ code:
-
 h2. The reality without Hashi, within Rails
+
+Although the Ruby language provides an easy way to access hashes, it becomes easier if you use Rails with "Matt Pulver's":http://www.xcombinator.com/2008/07/06/activerecord-from_json-and-from_xml/ code:
 
 <pre>
 	class Team < ActiveRecord::Base
@@ -38,7 +37,7 @@ h2. How does it compare to Hashi?
 Hashi actually does not create your attributes, instead it deals with *method_missing* invocations to
 simulate those properties, never creating a copy of your hash.
 
-h2. More info
+h2. Updated hash
 
 You can access the original hash (updated if you have made any changes) by one of those two ways:
 
@@ -54,6 +53,15 @@ You can access the original hash (updated if you have made any changes) by one o
 	puts object.hash
 	
 </pre>
+
+h1. Chokara
+
+Chokara is the korean version of hashis. In our case, chokara is used to support
+evolution-ready schemas and loosely coupled systems in the web.
+
+h2. Updated hash
+
+Chokara only provides support for overriding values in a hash when you defined writer methods *do not* receive and interpret blocks (due to a famous ruby 1.8 limitation).
 
 h1. Installing
 
