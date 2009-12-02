@@ -67,6 +67,12 @@ describe Chokara::Base do
       product.player[1].name = "donizetti"
       product.player[1].name.should == ("donizetti")
     end
+    it "should invoke the original method_missing if there is no attribute with that nem" do
+      hash = {}
+      product = Product.from_hash(hash)
+      product.should_receive(:method_missing).with(:whatever)
+      product.whatever
+    end
         
   end
   
