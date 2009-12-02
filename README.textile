@@ -142,14 +142,14 @@ h2. Ruby
 
 gem install gemcutter
 gem tumble
-gem install hashi
+gem install jeokkarak
 
 h2. Rails
 
 Just add in your environment.rb the following line:
 
 <pre>
-config.gem "hashi", :source => "http://gemcutter.org"
+config.gem "jeokkarak", :source => "http://gemcutter.org"
 </pre>
 
 And then execute:
@@ -157,14 +157,14 @@ And then execute:
 
 or, if you prefer to install it as a plugin:
 
-<pre>script/plugin install git://github.com/caelum/hashi.git</pre>
+<pre>script/plugin install git://github.com/caelum/jeokkarak.git</pre>
 
 
 h2. Help
 
 If you are looking for or want to help, let us know at the mailing list:
 
-"http://groups.google.com/group/hashi-ruby":http://groups.google.com/group/hashi-ruby
+"http://groups.google.com/group/jeokkarak":http://groups.google.com/group/jeokkarak
 
 h2. Team
 
@@ -179,19 +179,21 @@ Active Commiters
 
 h3. Sources
 
-You can see its source code at: "github":http://github.com/caelum/hashi
+You can see its source code at: "github":http://github.com/caelum/jeokkarak
 
 h2. What's new
 
 h3. 1.0.1
 
+* Supports active record relationships
+* Supports jeokkarak relationships
 * Supports boolean invocations with ?
 * Non-existing fields will throw an exception
 
 h2. License
 
 /***
- * Copyright (c) 2009 Caelum - www.caelum.com.br/opensource
+ * Copyright (c) 2009 Caelum - www.caelumobjects.com.br
  * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
