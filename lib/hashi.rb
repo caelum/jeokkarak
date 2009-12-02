@@ -1,4 +1,4 @@
-require 'chokara'
+require 'jeokkarak'
 
 module Hashi
   class UndefinedMethod
@@ -33,6 +33,9 @@ module Hashi
       val
     end
     
+  end
+  def self.from_hash(h)
+    CustomHash.new(h)
   end
   def self.to_object(h)
     CustomHash.new(h)
