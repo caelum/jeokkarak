@@ -45,6 +45,9 @@ end
 module Jeokkarak
   module Config
     def acts_as_jeokkarak
+      self.module_eval do
+        attr_accessor :_internal_hash
+      end
       self.extend Jeokkarak::Base
     end
   end

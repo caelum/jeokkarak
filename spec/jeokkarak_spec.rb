@@ -1,7 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 class Player
-  attr_accessor :_internal_hash
   acts_as_jeokkarak
   attr_accessor :name
   attr_accessor :valid
@@ -11,7 +10,6 @@ class Player
 end
 
 class Team
-  attr_accessor :_internal_hash
   acts_as_jeokkarak
   has_child Player, :as => "player"
 end
