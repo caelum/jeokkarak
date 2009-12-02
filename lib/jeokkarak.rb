@@ -4,6 +4,7 @@ module Jeokkarak
       resource_children[options[:as]] = type
     end
     def child_type_for(name)
+      return reflect_on_association(key.to_sym ).klass if respond_to? :reflect_on_association
       resource_children[name] || Hashi
     end
     def resource_children
@@ -16,20 +17,11 @@ module Jeokkarak
       result = self.new
       result._internal_hash = h
       h.each do |key,value|
-        if respond_to? :reflect_on_association
-          case value.class.to_s
-          when 'Array'
-            h[key].map! { |e| reflect_on_association(key.to_sym ).klass.from_hash e }
-          when /\AHash(WithIndifferentAccess)?\Z/
-            h[key] = reflect_on_association(key.to_sym ).klass.from_hash value
-          end
-        elsif
-          case value.class.to_s
-          when 'Array'
-            h[key].map! { |e| child_type_for(key ).from_hash e }
-          when /\AHash(WithIndifferentAccess)?\Z/
-            h[key] = child_type_for(key ).from_hash value
-          end
+        case value.class.to_s
+        when 'Array'
+          h[key].map! { |e| child_type_for(key).from_hash e }
+        when /\AHash(WithIndifferentAccess)?\Z/
+          h[key] = child_type_for(key ).from_hash value
         end
         name = "#{key}="
         result.send(name, value) if result.respond_to?(name)
