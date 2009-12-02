@@ -13,23 +13,25 @@ module Jeokkarak
     end
     def from_hash(h)
       h = h.dup
-      links = nil
       result = self.new
       result._internal_hash = h
       h.each do |key,value|
-        case value.class.to_s
-        when 'Array'
-          h[key].map! { |e| child_type_for(key).from_hash e }
-        when /\AHash(WithIndifferentAccess)?\Z/
-          h[key] = child_type_for(key ).from_hash value
-        end
-        name = "#{key}="
-        result.send(name, value) if result.respond_to?(name)
-        def result.method_missing(name, *args, &block)
-            Hashi.to_object(@_internal_hash).send(name, args[0], block)
-        end
+        from_hash_parse result, h, key, value
+      end
+      def result.method_missing(name, *args, &block)
+          Hashi.to_object(@_internal_hash).send(name, args[0], block)
       end
       result
+    end
+    def from_hash_parse(result,h,key,value)
+      case value.class.to_s
+      when 'Array'
+        h[key].map! { |e| child_type_for(key).from_hash e }
+      when /\AHash(WithIndifferentAccess)?\Z/
+        h[key] = child_type_for(key ).from_hash value
+      end
+      name = "#{key}="
+      result.send(name, value) if result.respond_to?(name)
     end
   end
 end
