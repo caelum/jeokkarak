@@ -1,5 +1,3 @@
-require 'jeokkarak'
-
 module Hashi
   class UndefinedMethod
   end

@@ -1,3 +1,5 @@
+require 'hashi'
+
 module Jeokkarak
   module Base
     
