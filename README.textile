@@ -54,14 +54,14 @@ You can access the original hash (updated if you have made any changes) by one o
 	
 </pre>
 
-h1. Chokara
+h1. Jeokkarak
 
-Chokara is the korean version of hashis. In our case, chokara is used to support
+Jeokkarak is the korean version of hashis. In our case, Jeokkarak is used to support
 evolution-ready schemas and loosely coupled systems in the web.
 
 h2. Updated hash
 
-Chokara only provides support for overriding values in a hash when you defined writer methods *do not* receive and interpret blocks (due to a famous ruby 1.8 limitation).
+Jeokkarak only provides support for overriding values in a hash when you defined writer methods *do not* receive and interpret blocks (due to a famous ruby 1.8 limitation).
 
 h1. Installing
 
