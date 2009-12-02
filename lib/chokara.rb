@@ -5,6 +5,7 @@ module Chokara
       h = h.dup
       links = nil
       result = self.new
+      result._internal_hash = h
       h.each do |key,value|
         case value.class.to_s
         when 'Array'
@@ -14,6 +15,12 @@ module Chokara
         end
         name = "#{key}="
         result.send(name, value) if result.respond_to?(name)
+        def result.method_missing(name, *args, &block)
+          puts "will try #{name} #{args} #{block}"
+          result = Hashi.to_object(@_internal_hash).send(name, args, block)
+          puts "ha! missing #{name} is #{result}"
+          result
+        end
       end
 #      if !(links.nil?) && self.include?(Restfulie::Client::Instance)
 #        result.add_transitions(links)
