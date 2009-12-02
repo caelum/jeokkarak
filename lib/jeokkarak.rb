@@ -1,16 +1,24 @@
 module Jeokkarak
   module Base
+    
+    # defines that this type has a child element
     def has_child(type, options={})
       resource_children[options[:as]] = type
     end
+    
+    # checks what is the type element for this type (supports rails ActiveRecord, has_child and Hashi)
     def child_type_for(name)
       return reflect_on_association(key.to_sym ).klass if respond_to? :reflect_on_association
       resource_children[name] || Hashi
     end
+    
+    # returns the registered children list for this resource
     def resource_children
       @children ||= {}
       @children
     end
+    
+    # creates an instance of this type based on this hash
     def from_hash(h)
       h = h.dup
       result = self.new
@@ -23,6 +31,8 @@ module Jeokkarak
       end
       result
     end
+    
+    # extension point to parse a value
     def from_hash_parse(result,h,key,value)
       case value.class.to_s
       when 'Array'
@@ -38,6 +48,8 @@ end
 
 module Jeokkarak
   module Config
+    
+    # entry point to define a jeokkarak type
     def acts_as_jeokkarak
       self.module_eval do
         attr_accessor :_internal_hash

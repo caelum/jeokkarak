@@ -1,4 +1,32 @@
-h1. Hash and Objects
+h1. Jeokkarak
+
+Jeokkarak is the korean version of hashis. In our case, Jeokkarak is used to support
+evolution-ready schemas and loosely coupled systems in the web.
+By creating your own class only with the attributes you require:
+
+<pre>
+class Player
+  acts_as_jeokkarak
+  attr_accessor :name
+end
+</pre>
+
+You can still parse the entire hash and set the fields that you know, and allow schema evolution
+(and forward compatibility) so that the new fields are dynamically created in your object:
+
+<pre>
+# using the existing field
+hash = {"name" => "guilherme silveira"}
+player = Player.from_hash(hash)
+player.name.should == ("guilherme silveira")
+	
+# dinamically creating a field
+hash = {"age" => 29}
+player = Player.from_hash(hash)
+player.age.should == 29
+</pre>
+
+h1. Hashi
 
 It's a common task to simulate objects from hashes, but one has to remember using hash access format in order to access it. Hashi helps you by allowing direct access to its content:
 
@@ -8,7 +36,8 @@ It's a common task to simulate objects from hashes, but one has to remember usin
 	puts object.team.players[0].name
 </pre>
 
-h1. Why would I use Hashi?
+
+h1. What is Hashi?
 
 h2. The reality without Hashi
 
@@ -32,7 +61,7 @@ Although the Ruby language provides an easy way to access hashes, it becomes eas
 	puts Team.from_xml(hash).players[0].name
 </pre>
 
-h2. How does it compare to Hashi?
+h2. How does it compare to Hashie?
 
 Hashi actually does not create your attributes, instead it deals with *method_missing* invocations to
 simulate those properties, never creating a copy of your hash.
@@ -56,12 +85,41 @@ You can access the original hash (updated if you have made any changes) by one o
 
 h1. Jeokkarak
 
-Jeokkarak is the korean version of hashis. In our case, Jeokkarak is used to support
-evolution-ready schemas and loosely coupled systems in the web.
+h2. Relationships
 
-h2. Updated hash
+Jeokkarak supports schema evoluted relationships: newly created relationships will be treated as Hashi's:
 
-Jeokkarak only provides support for overriding values in a hash when you defined writer methods *do not* receive and interpret blocks (due to a famous ruby 1.8 limitation).
+<pre>
+hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}], "new_relation" => {"new_entry" => 20}}
+team = Team.from_hash(hash)
+team.new_relation.new_entry.should eql(20)
+</pre>
+
+It also supports pre-existing relations through the use of has_child:
+
+<pre>
+class Team
+  acts_as_jeokkarak
+  has_child Player, :as => "player"
+end
+
+# will instantiate a Player type:
+hash = {"player" => {"name" => "guilherme silveira"}}
+team = Team.from_hash(hash)
+team.player.class.should eql(Player)
+</pre>
+
+And finally, it supports rails's ActiveRecord:
+
+<pre>
+class Team < ActiveRecord::Base
+  has_many :players
+end
+
+hash = {"players" => [{"name" => "guilherme silveira"}]}
+team = Team.from_hash(hash)
+team.players[0].class.should eql(Player)
+</pre>
 
 h1. Installing
 
