@@ -13,9 +13,9 @@ Jeokkarak and Hashi makes the perfect couple for this task: given a hash (parsed
 
 In any of those cases, Jeokkarak will let your server evolve their schema, without requiring you to add new fields to your type.
 
-h1. Jeokkarak
+h1. Jeokkarak (箸)
 
-Jeokkarak is the korean version of hashis. In our case, Jeokkarak is used to support
+Jeokkarak (箸) is the korean version of hashis. In our case, Jeokkarak is used to support
 evolution-ready schemas and loosely coupled systems in the web.
 By creating your own class only with the attributes you require:
 

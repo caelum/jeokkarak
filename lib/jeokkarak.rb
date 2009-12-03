@@ -22,6 +22,7 @@ module Jeokkarak
     
     # creates an instance of this type based on this hash
     def from_hash(h)
+      h = {} if h.nil? # nasty required check
       h = h.dup
       result = self.new
       result._internal_hash = h
