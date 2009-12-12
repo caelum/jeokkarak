@@ -7,10 +7,16 @@ describe Hashi::CustomHash do
       hash = {"name" => "guilherme silveira"}
       Hashi.to_object(hash).name.should == ("guilherme silveira")
     end
+    
     it "should allow direct attribute attribution" do
       hash = {"name" => "guilherme silveira"}
       Hashi.to_object(hash).name = "donizetti"
       Hashi.to_object(hash).name.should == ("donizetti")
+    end
+    
+    it "should allow access to nil attribute" do
+      hash = {"name" => nil}
+      Hashi.to_object(hash).name.should be_nil
     end
     it "should allow access to child element" do
       hash = {"player" => {"name" => "guilherme silveira"}}

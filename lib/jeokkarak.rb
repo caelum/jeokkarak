@@ -10,7 +10,7 @@ module Jeokkarak
     
     # checks what is the type element for this type (supports rails ActiveRecord, has_child and Hashi)
     def child_type_for(name)
-      return reflect_on_association(key.to_sym ).klass if respond_to? :reflect_on_association
+      return reflect_on_association(name.to_sym ).klass if respond_to? :reflect_on_association
       resource_children[name] || Hashi
     end
     
@@ -30,7 +30,7 @@ module Jeokkarak
         from_hash_parse result, h, key, value
       end
       def result.method_missing(name, *args, &block)
-          Hashi.to_object(@_internal_hash).send(name, args[0], block)
+        Hashi.to_object(@_internal_hash).send(name, args[0], block)
       end
       result
     end
