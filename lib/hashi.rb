@@ -13,7 +13,7 @@ module Hashi
     
     attr_reader :hash
 
-    def initialize(h)
+    def initialize(h = {})
       @hash = h
     end
     
