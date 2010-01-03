@@ -41,6 +41,11 @@ describe Hashi::CustomHash do
       Hashi.to_object(hash).player[1].name.should == ("donizetti")
     end
     
+    it "should respond to existing attributes" do
+      hash = {"player" => {"name" => "guilherme silveira"}}
+      Hashi.to_object(hash).respond_to?(:player).should be_true
+    end
+    
   end
   
 end
