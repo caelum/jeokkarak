@@ -52,12 +52,14 @@ describe Hashi::CustomHash do
     end
     
     it "should be able to iterate over array" do
-      hash = [5, 7]
+      hash = [{"oi" => :hello}, {"oi" => :sorry}]
       found = []
       Hashi.to_object(hash).each do |key|
-        found << key
+        found << key.oi
       end
-      found.should eql(hash)
+      found.length.should be(2)
+      found[0].should eql(hash[0]["oi"])
+      found[1].should eql(hash[1]["oi"])
     end
     
   end
