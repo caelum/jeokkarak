@@ -23,6 +23,10 @@ module Hashi
         parse(name, @hash[name.chop])
       elsif name[-1,1] == "="
         @hash[name.chop] = args[0]
+      elsif name.respond_to? name
+        @hash.send(name, *args)
+      elsif name == "length" && @hash.kind_of?(Array)
+        @hash.length
       else
         return nil if @hash.has_key?(name) && @hash[name].nil?
         parse(name, transform(@hash[name]))
@@ -30,7 +34,7 @@ module Hashi
     end
     
     def respond_to?(symbol)
-      super.respond_to?(symbol) || @hash.key?(symbol.to_s)
+      super(symbol) || @hash.key?(symbol.to_s)
     end
     
     def [](x)

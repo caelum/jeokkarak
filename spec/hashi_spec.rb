@@ -46,6 +46,11 @@ describe Hashi::CustomHash do
       Hashi.to_object(hash).respond_to?(:player).should be_true
     end
     
+    it "should be able to hand out an array size" do
+      hash = [5, 7]
+      Hashi.to_object(hash).length.should eql(2)
+    end
+    
   end
   
 end
