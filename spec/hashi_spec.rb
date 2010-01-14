@@ -51,6 +51,15 @@ describe Hashi::CustomHash do
       Hashi.to_object(hash).length.should eql(2)
     end
     
+    it "should be able to iterate over array" do
+      hash = [5, 7]
+      found = []
+      Hashi.to_object(hash).each do |key|
+        found << key
+      end
+      found.should eql(hash)
+    end
+    
   end
   
 end
