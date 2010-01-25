@@ -39,7 +39,6 @@ module Hashi
     
     def is_hash?
       @internal_hash.kind_of? Hash
-      super(symbol) || @internal_hash.key?(symbol.to_s)
     end
     
     def [](x)
