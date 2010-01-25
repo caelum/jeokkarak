@@ -107,7 +107,7 @@ Jeokkarak supports schema evoluted relationships: newly created relationships wi
 <pre>
 hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}], "new_relation" => {"new_entry" => 20}}
 team = Team.from_hash(hash)
-team.new_relation.new_entry.should eql(20)
+team.new_relation.new_entry.should == 20
 </pre>
 
 It also supports pre-existing relations through the use of has_child:
@@ -121,7 +121,7 @@ end
 # will instantiate a Player type:
 hash = {"player" => {"name" => "guilherme silveira"}}
 team = Team.from_hash(hash)
-team.player.class.should eql(Player)
+team.player.class.should == Player
 </pre>
 
 And finally, it supports rails's ActiveRecord:
@@ -133,7 +133,7 @@ end
 
 hash = {"players" => [{"name" => "guilherme silveira"}]}
 team = Team.from_hash(hash)
-team.players[0].class.should eql(Player)
+team.players[0].class.should == Player
 </pre>
 
 h1. Installing

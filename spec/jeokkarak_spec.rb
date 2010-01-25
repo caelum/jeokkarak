@@ -20,7 +20,7 @@ describe Jeokkarak::Base do
     it "should create that class's object" do
       hash = {"name" => "guilherme silveira"}
       player = Player.from_hash(hash)
-      player.class.should eql(Player)
+      player.class.should == Player
     end
     it "should allow direct attribute access" do
       hash = {"name" => "guilherme silveira"}
@@ -47,7 +47,7 @@ describe Jeokkarak::Base do
     it "should allow access to child element" do
       hash = {"player" => {"name" => "guilherme silveira"}}
       team = Team.from_hash(hash)
-      team.player.class.should eql(Player)
+      team.player.class.should == Player
       team.player.name.should == ("guilherme silveira")
     end
     it "should allow access to boolean element" do
@@ -64,8 +64,8 @@ describe Jeokkarak::Base do
     it "should allow access to an array element" do
       hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}]}
       team = Team.from_hash(hash)
-      team.player[0].class.should eql(Player)
-      team.player[1].class.should eql(Player)
+      team.player[0].class.should == Player
+      team.player[1].class.should == Player
       team.player[1].name.should == ("caue guerra")
     end
     it "should allow access attribution to an array element" do

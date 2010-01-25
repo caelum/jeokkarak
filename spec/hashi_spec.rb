@@ -48,7 +48,7 @@ describe Hashi::CustomHash do
     
     it "should be able to hand out an array size" do
       hash = [5, 7]
-      Hashi.to_object(hash).length.should eql(2)
+      Hashi.to_object(hash).length.should == 2
     end
     
     it "should be able to iterate over array" do
@@ -58,8 +58,8 @@ describe Hashi::CustomHash do
         found << key.oi
       end
       found.length.should be(2)
-      found[0].should eql(hash[0]["oi"])
-      found[1].should eql(hash[1]["oi"])
+      found[0].should == hash[0]["oi"]
+      found[1].should == hash[1]["oi"]
     end
     
   end
