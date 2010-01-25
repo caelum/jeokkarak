@@ -11,38 +11,39 @@ module Hashi
   
   class CustomHash
     
-    attr_reader :hash
+    attr_reader :internal_hash
 
-    def initialize(h = {})
-      @hash = h
+    def initialize(hash = {})
+      @internal_hash = hash
     end
     
     def method_missing(name, *args, &block)
       name = name.to_s if name.kind_of? Symbol
       if name[-1,1] == "?"
-        parse(name, @hash[name.chop])
+        parse(name, @internal_hash[name.chop])
       elsif name[-1,1] == "="
-        @hash[name.chop] = args[0]
-      elsif @hash.kind_of?(Array) && name == "each"
-        @hash.each do |k| block.call(transform(k)) end
+        @internal_hash[name.chop] = args[0]
+      elsif @internal_hash.kind_of?(Array) && name == "each"
+        @internal_hash.each do |k| block.call(transform(k)) end
       elsif name.respond_to? name
-        @hash.send(name, *args, &block)
+        @internal_hash.send(name, *args, &block)
       else
-        return nil if @hash.has_key?(name) && @hash[name].nil?
-        parse(name, transform(@hash[name]))
+        return nil if @internal_hash.has_key?(name) && @internal_hash[name].nil?
+        parse(name, transform(@internal_hash[name]))
       end
     end
     
     def respond_to?(symbol)
-      super(symbol) || (is_hash? && @hash.key?(symbol.to_s))
+      super(symbol) || (is_hash? && @internal_hash.key?(symbol.to_s))
     end
     
     def is_hash?
-      @hash.kind_of? Hash
+      @internal_hash.kind_of? Hash
+      super(symbol) || @internal_hash.key?(symbol.to_s)
     end
     
     def [](x)
-      transform(@hash[x])
+      transform(@internal_hash[x])
     end
     
     private
@@ -51,19 +52,19 @@ module Hashi
       value
     end
     
-    def parse(name, val)
-      raise Hashi::UndefinedMethod.new("undefined method '#{name}'") if val.nil?
-      val
+    def parse(name, value)
+      raise Hashi::UndefinedMethod.new("undefined method '#{name}'") if value.nil?
+      value
     end
     
   end
   
-  def self.from_hash(h)
-    CustomHash.new(h)
+  def self.from_hash(hash)
+    CustomHash.new(hash)
   end
   
-  def self.to_object(h)
-    CustomHash.new(h)
+  def self.to_object(hash)
+    CustomHash.new(hash)
   end
   
 end
