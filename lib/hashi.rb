@@ -34,7 +34,7 @@ module Hashi
     end
     
     def respond_to?(symbol)
-      super(symbol) || (is_hash? && @internal_hash.key?(symbol.to_s))
+      super(symbol) || (@internal_hash.respond_to?(:key?) && @internal_hash.key?(symbol.to_s))
     end
     
     def is_hash?
@@ -42,6 +42,7 @@ module Hashi
     end
     
     def [](x)
+      return CustomHash.new(@internal_hash.values.first)[x] if @internal_hash.length==1 && @internal_hash.values.first.kind_of?(Array)
       transform(@internal_hash[x])
     end
     

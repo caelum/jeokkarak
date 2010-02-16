@@ -35,6 +35,12 @@ describe Hashi::CustomHash do
       hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}]}
       Hashi.to_object(hash).player[1].name.should == ("caue guerra")
     end
+
+    it "should allow direct access to an array element" do
+      hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}]}
+      Hashi.to_object(hash)[1].name.should == ("caue guerra")
+    end
+
     it "should allow access attribution to an array element" do
       hash = {"player" => [{"name" => "guilherme silveira"}, {"name" => "caue guerra"}]}
       Hashi.to_object(hash).player[1].name = "donizetti"
