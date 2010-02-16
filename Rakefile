@@ -5,7 +5,7 @@ require 'rake/gempackagetask'
 require 'spec/rake/spectask'
 
 GEM = "jeokkarak"
-GEM_VERSION = "1.0.4"
+GEM_VERSION = "1.0.5"
 SUMMARY = "Hash to object helper methods for schema evolution forward-compatible services."
 AUTHOR = "Guilherme Silveira, Jose Donizetti, Caue Guerra"
 EMAIL = "guilherme.silveira@caelum.com.br"
